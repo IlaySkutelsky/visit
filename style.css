@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(64,224,208,1), rgba(0,103,104, 1));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('noise.svg');
+  z-index: -1;
+  opacity: 1;
+  mix-blend-mode: overlay;
+}
+
+#cup {
+  cursor: pointer;
+}
+
+.tea-meter {
+  position: absolute;
+  top: 33%;
+  height: 33vh;
+  width: 25px;
+  left: 20%;
+  border-radius: 10px;
+  border: 2px solid white;
+  overflow: hidden;9
+  opacity: 1;
+  transition: all 80ms ease-in-out;
+}
+.tea-meter::after {
+  content: "";
+  height: attr(data-lvl, %);
+  width: 100%;
+  background-color: brown;
+  display: block;
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  transition: all 2000ms ease-in-out;
+}
+.tea-meter.hidden {
+  opacity: 0;
+}
+.tea-meter.sip0::after {
+  height: 100%
+}
+.tea-meter.sip1::after {
+  height: 80%
+}
+.tea-meter.sip2::after {
+  height: 60%
+}
+.tea-meter.sip3::after {
+  height: 40%
+}
+.tea-meter.sip4::after {
+  height: 20%
+}
+.tea-meter.sip5::after {
+  height: 0%
+}
+
+
+svg {
+  max-width: 80%;
+}
+
+svg text {
+  font-size: 3em;
+  direction: rtl;
+  font-family: Miriam;
+}
+
+svg text .caret {
+  animation: blink-caret 1s steps(2) infinite;
+}
+
+@keyframes blink-caret {
+  0% { visibility: hidden; }
+  100% { visibility: visible; }
+}
+
+#head {
+  transform-origin: 63.5% 32%;
+  transform: scale(1, 1) rotateZ(0deg);
+  animation: head-buzz 1000ms steps(1) infinite;
+}
+
+#body {
+  cursor: pointer;
+}
+
+@keyframes head-buzz {
+  0% {transform: scale(-1, 1) rotateZ(-75deg);}
+  10% {transform: scale(1, -1) rotateZ(0deg);}
+  20% {transform: scale(-1, -1) rotateZ(0deg);}
+  30% {transform: scale(1, -1) rotateZ(240deg);}
+  40% {transform: scale(1, 1) rotateZ(10deg);}
+  50% {transform: scale(-1, 1) rotateZ(0deg);}
+  60% {transform: scale(1, 1) rotateZ(80deg);}
+  70% {transform: scale(-1, -1) rotateZ(40deg);}
+  80% {transform: scale(-1, 1) rotateZ(-40deg);}
+  90% {transform: scale(-1, -1) rotateZ(160deg);}
+  100% {transform: scale(1, -1) rotateZ(160deg);}
+}
