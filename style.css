@@ -1,3 +1,9 @@
+
+@font-face {
+  font-family: "Miriam";
+  src:  url("./Miriam_Libre/MiriamLibre-Regular.ttf");
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,6 +15,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Miriam;
 }
 
 .background {
@@ -17,8 +24,16 @@ body {
   height: 100%;
   background-image: url('noise.svg');
   z-index: -1;
-  opacity: 1;
+  opacity: .6;
   mix-blend-mode: overlay;
+  animation: bg-noise 800ms steps(1) infinite;
+}
+
+@keyframes bg-noise {
+  0% {transform: scale(1, -1);}
+  25% {transform: scale(-1, -1);}
+  50% {transform: scale(1, 1);}
+  75% {transform: scale(-1, 1);}
 }
 
 #cup {
@@ -30,9 +45,9 @@ body {
   top: 33%;
   height: 33vh;
   width: 25px;
-  left: 20%;
+  left: 10%;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 1px solid black;
   overflow: hidden;9
   opacity: 1;
   transition: all 80ms ease-in-out;
@@ -70,24 +85,26 @@ body {
   height: 0%
 }
 
-
-svg {
-  max-width: 80%;
-}
-
-svg text {
-  font-size: 3em;
+.text {
+  position: absolute;
+  right: 50%;
+  top: 36%;
   direction: rtl;
-  font-family: Miriam;
+  font-size: 1.4em;
+  max-width: 17%;
 }
 
-svg text .caret {
+.text .caret {
   animation: blink-caret 1s steps(2) infinite;
 }
 
 @keyframes blink-caret {
   0% { visibility: hidden; }
   100% { visibility: visible; }
+}
+
+svg {
+  max-width: 80%;
 }
 
 #head {

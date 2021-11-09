@@ -4,12 +4,12 @@ let texts = [
   'לא תכננתי לקבל אורחים עכשיו'
 ]
 let i = 0
-let typeWriter = new TypeWriter('svg text .main-text')
+let typeWriter = new TypeWriter('.text .main-text')
 
 async function bodyClicked() {
   makeElmUninteractive('#body')
   await typeWriter.typeText(texts[i])
-  await typeWriter.clean(200)
+  await typeWriter.clean(150)
   makeElmInteractive('#body')
   if (i==0) i++
 }
